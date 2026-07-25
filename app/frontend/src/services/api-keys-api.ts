@@ -48,7 +48,7 @@ class ApiKeysService {
       params.append('include_inactive', 'true');
     }
     
-    const response = await fetch(`${this.baseUrl}?${params}`);
+    const response = await fetch(`${this.baseUrl}/?${params}`);
     if (!response.ok) {
       throw new Error(`Failed to fetch API keys: ${response.statusText}`);
     }
@@ -67,7 +67,7 @@ class ApiKeysService {
   }
 
   async createOrUpdateApiKey(request: ApiKeyCreateRequest): Promise<ApiKey> {
-    const response = await fetch(this.baseUrl, {
+    const response = await fetch(`${this.baseUrl}/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
